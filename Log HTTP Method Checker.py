@@ -1,0 +1,25 @@
+valid_http_method = ["GET", "POST"]
+target_http_method = input("Please enter the HTTP method you wish to filter for: ").upper()
+
+if target_http_method not in valid_http_method:
+        print("Invalid Input, please enter either GET or POST")
+else:
+    with open("C:\\Users\\Jeremiah\\VS Code\\Python Projects\\FirstProjects\\access.log", "r") as file:
+        for line in file:
+            cleaned_line = line.strip()
+            if cleaned_line:
+                parts = cleaned_line.split(" ")
+                if len(parts) >= 9:
+                    ip_address = parts[0]
+                    timestamp = parts[3].strip("[]")
+                    request_method = parts[4].strip('"')
+                    resource = parts[5]
+                    protocol = parts[6].strip('"')
+                    status_code = parts[7]
+                    response_size = parts[8]
+
+                    method_parts = request_method.split(" ")
+                    if len(method_parts) > 0:
+                         method = method_parts[0]
+                         if method == target_http_method:
+                              print(cleaned_line)
