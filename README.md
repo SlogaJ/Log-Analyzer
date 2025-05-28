@@ -1,10 +1,6 @@
 #Log-Analyzer
 
-<<<<<<< HEAD
-This project started off as trying to code something that can filter through a log and print its contents in a readable format, then I decided to try and filter for specifc things like HTTP method, specific IP's, and then Status Codes. Finally, I put them together into one code that is able to search and print for all the desired attributes. These pieces are my first attempt at writting code that's not something like a number guessing game, a simple calculator and even a rock, paper, scissors game so they do have a lot of similarites between each other and in future projects I will work on only having the necessary code needed. :) 
-=======
 This project started off as trying to code something that can filter through a log and print its contents in a readable format, then I decided to try and filter for specifc things like HTTP method, specific IP's, and then Status Codes. Finally, I put them together into one code that is able to search and print for all the desired attributes. These pieces are my first attempt at writting code that's not something like a number guessing game, a simple calculator and even a rock, paper, scissors game so they do have a lot of similarites between each other and in future projects I will work on only having the necessary code needed. :)
->>>>>>> 3e6a7a31845d876836b9b137bcb4d96545125810
 
 Log Checker allows the user to open a file depiciting apache http logs like "203.0.113.10 - - [16/May/2025:09:28:47] "GET /search?q=admin HTTP/1.1" 200 1050" and formats it in a clean and readable way.
 
