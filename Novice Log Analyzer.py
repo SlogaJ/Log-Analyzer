@@ -30,13 +30,12 @@ try:
         found = False
         for line in file:
             cleaned_line = line.strip()
-            if cleaned_line:
-                if not cleaned_line:
-                    continue
+            if not cleaned_line:
+                continue
 
 
-                log_part = cleaned_line.split(" ")
-                if len(log_part) >= 9:
+            log_part = cleaned_line.split(" ")
+            if len(log_part) >= 9:
                     ip_address = log_part[0]
                     timestamp = log_part[3].strip("[]")
                     request_method = log_part[4].strip('"')
@@ -47,7 +46,7 @@ try:
 
 #once matched it will print out results unless entry was skipped
 
-                if (
+            if (
                     (not target_ip or ip_address == target_ip) and
                     (not target_status_code or status_code == target_status_code) and
                     (not target_http_method or request_method == target_http_method)
