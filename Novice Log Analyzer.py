@@ -31,20 +31,17 @@ def analyze_log_file(log_path, ip_filter, code_filter, method_filter):
             print("\n Matching log entries:\n" + "-" * 40)
             found = False
             for line in file:
-                cleaned_line = line.strip()
-                if not cleaned_line:
+                log_part = line.strip().split()
+                if len(log_part) < 9:
                     continue
 
-
-                log_part = cleaned_line.split(" ")
-                if len(log_part) >= 9:
-                    ip_address = log_part[0]
-                    timestamp = log_part[3].strip("[]")
-                    http_method = log_part[4].strip('"')
-                    resource = log_part[5]
-                    protocol = log_part[6].strip('"')
-                    status_code = log_part[7]
-                    response_size = log_part[8]
+                ip_address = log_part[0]
+                timestamp = log_part[3].strip("[]")
+                http_method = log_part[4].strip('"')
+                resource = log_part[5]
+                protocol = log_part[6].strip('"')
+                status_code = log_part[7]
+                response_size = log_part[8]
 
 #once matched it will print out results unless entry was skipped
 
@@ -53,7 +50,7 @@ def analyze_log_file(log_path, ip_filter, code_filter, method_filter):
                     (not code_filter or status_code == code_filter) and
                     (not method_filter or http_method == method_filter)
                 ):
-                    print(cleaned_line)
+                    print(line.strip())
                     found = True
             if not found:
                 print("No matching entries found.")
@@ -63,9 +60,9 @@ def analyze_log_file(log_path, ip_filter, code_filter, method_filter):
         print(f"An error occured: {e}")
 
 def main():
-    log_path, ip, code, method = user_input()
-    input_validation(code, method)
-    analyze_log_file(log_path, ip, code, method)
+    log_path, ip, status_code, http_method = user_input()
+    input_validation(status_code, http_method)
+    analyze_log_file(log_path, ip, status_code, http_method)
 
 if __name__ == "__main__":
     main()
